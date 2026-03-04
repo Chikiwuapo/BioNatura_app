@@ -1,0 +1,16 @@
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="bg_main">#F6F8F6</color>
+    <color name="green_primary">#1D6031</color>
+    <color name="green_card_translucent">#33FFFFFF</color>
+    <color name="green_accent">#33A050</color>
+    <color name="text_dark">#2C3E50</color>
+    <color name="text_gray">#7F8C8D</color>
+    <color name="text_blue_gray">#607D8B</color>
+    <color name="red_notification">#E74C3C</color>
+    <color name="green_light_bg">#E8F2EA</color>
+    <color name="green_light">#E8F2EA</color>
+    <color name="nav_item_color">#1D6031</color>
+</resources>

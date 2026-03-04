@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_inicio"
+        android:icon="@drawable/lucide_home"
+        android:title="Inicio" />
+    <item
+        android:id="@+id/nav_historial"
+        android:icon="@drawable/lucide_history"
+        android:title="Historial" />
+    <item
+        android:id="@+id/nav_registrar"
+        android:icon="@drawable/lucide_circle_plus"
+        android:title="Registrar" />
+    <item
+        android:id="@+id/nav_perfil"
+        android:icon="@drawable/lucide_user"
+        android:title="Perfil" />
+</menu>

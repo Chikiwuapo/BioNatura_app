@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F5F7F6">
+
+        <View
+            android:id="@+id/VistaSuperior"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:background="#1B5E20"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <ImageButton
+            android:id="@+id/btnVolver"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="15dp"
+            android:src="@drawable/ic_volver"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/VistaSuperior"
+            app:layout_constraintBottom_toBottomOf="@+id/VistaSuperior"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Actualización de Datos"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="#FFFF"
+            app:layout_constraintTop_toTopOf="@+id/VistaSuperior"
+            app:layout_constraintBottom_toBottomOf="@id/VistaSuperior"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/datosCorreo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CAMBIAR CORREO"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#64748B"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/VistaSuperior"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardCorreo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:cardBackgroundColor="#FFFF"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/datosCorreo">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/lblEmail1"
+                        android:text="Nuevo Email"
+                        android:textSize="16sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:id="@+id/iconCorreo"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginStart="16dp"
+                        android:src="@drawable/ic_email"/>
+
+                    <EditText
+                        android:id="@+id/txtemail1"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/iconCorreo"
+                        android:layout_alignTop="@+id/iconCorreo"
+                        android:layout_marginStart="28dp"
+                        android:hint="Ingresa tu nuevo email"/>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#64748B"
+                    android:layout_marginVertical="18dp"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/lblEmail2"
+                        android:text="Confirmar Nuevo Email"
+                        android:textSize="16sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:id="@+id/iconCorreo2"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginStart="16dp"
+                        android:src="@drawable/ic_email"/>
+
+                    <EditText
+                        android:id="@+id/txtemail2"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/iconCorreo2"
+                        android:layout_alignTop="@+id/iconCorreo2"
+                        android:layout_marginStart="28dp"
+                        android:hint="Confirma tu nuevo email"/>
+
+                </RelativeLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <TextView
+            android:id="@+id/datosNumero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CAMBIAR NÚMERO"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#64748B"
+            android:layout_marginTop="48dp"
+            android:layout_marginStart="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardCorreo"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardNumero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:cardBackgroundColor="#FFFF"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/datosNumero">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/lblEmail1"
+                        android:text="Nuevo número de teléfono"
+                        android:textSize="16sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:id="@+id/iconNum"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginStart="16dp"
+                        android:src="@drawable/ic_numero"/>
+
+                    <EditText
+                        android:id="@+id/txtnumero"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/iconNum"
+                        android:layout_alignTop="@+id/iconNum"
+                        android:layout_marginStart="28dp"
+                        android:hint="Ingresa tu nuevo número"/>
+
+                </RelativeLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="32dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardNumero"
+            app:layout_constraintVertical_bias="1.0"
+            tools:layout_editor_absoluteX="20dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCancelar"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="12dp"
+                android:layout_weight="1"
+                android:text="Cancelar"
+                android:textAllCaps="false"
+                android:textColor="#475569"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:backgroundTint="#F1F5F9"
+                app:cornerRadius="14dp"
+                app:strokeColor="#CBD5E1"
+                app:strokeWidth="1dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnActualizar"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:lineSpacingExtra="0dp"
+                android:text="Actualizar Datos"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:backgroundTint="#4CAF50"
+                app:cornerRadius="14dp" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
