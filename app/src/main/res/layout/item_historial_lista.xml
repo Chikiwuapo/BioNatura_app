@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardCornerRadius="18dp"
+    app:cardElevation="3dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="14dp">
+
+        <TextView
+            android:id="@+id/txtFecha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="04 MAYO 2026"
+            android:textStyle="bold"
+            android:textSize="14sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="6dp">
+
+            <TextView
+                android:id="@+id/txtEntrada"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Entrada: 9:16 AM"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/txtSalida"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Salida: 4:40 PM"
+                android:layout_marginStart="16dp"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtLugar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lugar asignado: San Juan de Lurigancho"
+            android:textSize="12sp"
+            android:layout_marginTop="4dp"/>
+
+        <TextView
+            android:id="@+id/txtHoras"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Horas trabajadas: 8H"
+            android:textSize="12sp"
+            android:layout_marginTop="4dp"/>
+
+        <TextView
+            android:id="@+id/txtEstado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TARDANZA"
+            android:textColor="#000000"
+            android:background="#C6F000"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="4dp"
+            android:textStyle="bold"
+            android:textSize="11sp"
+            android:layout_marginTop="6dp"/>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

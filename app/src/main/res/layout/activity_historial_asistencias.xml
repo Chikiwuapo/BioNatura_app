@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F2F2F2">
 
     <!-- HEADER -->
     <androidx.cardview.widget.CardView
@@ -13,7 +14,7 @@
         android:layout_width="0dp"
         android:layout_height="80dp"
         app:cardCornerRadius="0dp"
-        app:cardBackgroundColor="#034D06"
+        app:cardBackgroundColor="#1B5E20"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -22,136 +23,231 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <!-- Flecha -->
-            <ImageView
+            <ImageButton
                 android:id="@+id/btnVolver"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
                 android:layout_marginStart="16dp"
+                android:background="@null"
                 android:src="@drawable/ic_volver"
+                app:tint="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
-            <!-- Texto centrado -->
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/txtTitulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Historial"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
+                android:text="HISTORIAL"
                 android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@color/white"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.cardview.widget.CardView>
 
-    <ScrollView
+
+    <!-- CONTENIDO -->
+    <LinearLayout
+        android:id="@+id/contenido"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/headerHistorial"
-        app:layout_constraintBottom_toTopOf="@id/footer_container"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
+
+        <!-- BUSCADOR + BOTONES -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_margin="16dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
-            <!-- BARRA DE BÚSQUEDA -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/searchLayout"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp">
+                android:layout_weight="1"
+                app:boxBackgroundMode="filled"
+                app:boxCornerRadiusTopStart="30dp"
+                app:boxCornerRadiusTopEnd="30dp"
+                app:boxCornerRadiusBottomStart="30dp"
+                app:boxCornerRadiusBottomEnd="30dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/searchInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Buscar..." />
+                    android:hint="Buscar por fecha"/>
+
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- FILTROS -->
+
+            <ImageButton
+                android:id="@+id/btnLista"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_icon_button"
+                android:src="@drawable/lineal"
+                android:padding="8dp"
+                app:tint="#1B5E20"/>
+
+
+            <ImageButton
+                android:id="@+id/btnGrid"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/bg_icon_button"
+                android:src="@drawable/cuadrados"
+                android:padding="8dp"
+                app:tint="#1B5E20"/>
+
+        </LinearLayout>
+
+
+        <!-- FILTROS -->
+        <LinearLayout
+            android:id="@+id/filtrosLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMes"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="Mes"
+                android:textAllCaps="false"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:backgroundTint="#2E7D32"
+                app:cornerRadius="20dp"
+                app:icon="@drawable/mes"
+                app:iconSize="18dp"
+                app:iconPadding="6dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSemana"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="Semana"
+                android:textAllCaps="false"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:backgroundTint="#2E7D32"
+                android:layout_marginStart="6dp"
+                app:cornerRadius="20dp"
+                app:icon="@drawable/semana"
+                app:iconSize="18dp"
+                app:iconPadding="6dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEstado"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:text="Estado"
+                android:textAllCaps="false"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                android:backgroundTint="#2E7D32"
+                android:layout_marginStart="6dp"
+                app:cornerRadius="20dp"
+                app:icon="@drawable/estado"
+                app:iconSize="18dp"
+                app:iconPadding="6dp"/>
+
+        </LinearLayout>
+
+
+        <!-- RESUMEN -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="14dp"
+            app:cardElevation="2dp">
+
             <LinearLayout
-                android:id="@+id/filtrosLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:orientation="horizontal"
-                android:gravity="center">
-
-                <Button
-                    android:id="@+id/btnSemana"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Semana"
-                    android:backgroundTint="#2E7D32"
-                    android:textSize="10sp"/>
-
-                <Button
-                    android:id="@+id/btnMes"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="#2E7D32"
-                    android:text="Mes"
-                    android:textSize="10sp"/>
-
-                <Button
-                    android:id="@+id/btnEstado"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Estado"
-                    android:backgroundTint="#2E7D32"
-                    android:textSize="10sp"/>
-
-                <ImageButton
-                    android:id="@+id/btnLista"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@null"
-                    android:src="@drawable/ic_history"
-                    app:tint="#016104" />
-
-                <ImageButton
-                    android:id="@+id/btnGrid"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@null"
-                    android:src="@drawable/ic_registros"
-                    app:tint="#016104"/>
-            </LinearLayout>
-
-            <!-- CONTENIDO PREVIEW -->
-            <LinearLayout
-                android:id="@+id/contenidoPreview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingBottom="16dp">
+                android:padding="14dp">
 
-                <include layout="@layout/item_resumen" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Resumen mensual"
+                    android:textStyle="bold"
+                    android:textSize="14sp"/>
 
-                <include layout="@layout/item_historial" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="95% de puntualidad"
+                    android:textColor="#2E7D32"
+                    android:textStyle="bold"
+                    android:layout_marginTop="4dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="6dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="16dp"
+                        android:text="18 asistencias"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="2 tardanzas"
+                        android:textSize="12sp"
+                        android:layout_marginEnd="16dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="0 faltas"
+                        android:textSize="12sp"/>
+
+                </LinearLayout>
+
             </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
 
-    <include
-        android:id="@+id/footer_container"
-        layout="@layout/layout_footer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        </androidx.cardview.widget.CardView>
+        <!-- RECYCLER -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerHistorial"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingHorizontal="16dp"
+            tools:listitem="@layout/item_historial_lista"/>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
