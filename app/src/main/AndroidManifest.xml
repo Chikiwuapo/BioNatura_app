@@ -15,6 +15,12 @@
         android:theme="@style/Theme.BioNatura"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ActualizarContrasena"
+            android:exported="false" />
+        <activity
+            android:name=".ActualizarDatosActivity"
+            android:exported="false" />
+        <activity
             android:name=".material_register"
             android:exported="false" />
         <activity

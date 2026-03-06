@@ -1,8 +1,10 @@
 package com.goku1.bionatura;
 
+import com.goku1.bionatura.models.PasswordUpdateRequest;
 import com.goku1.bionatura.models.RegistroRequest;
 import com.goku1.bionatura.models.UserDate;
 import com.goku1.bionatura.models.UserProfile;
+import com.goku1.bionatura.models.UserUpdateProfileRequest;
 
 
 import java.util.List;
@@ -13,6 +15,7 @@ import retrofit2.http.Body;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.GET;
+import retrofit2.http.PUT;
 
 
 public interface ApiService {
@@ -28,4 +31,10 @@ public interface ApiService {
 
     @POST("material/registrar")
     Call<ResponseBody> registrarMaterial(@Body RegistroRequest request);
+
+    @PUT("profile/update")
+    Call<ResponseBody> actualizarPerfil(@Header("Authorization") String token, @Body UserUpdateProfileRequest request);
+
+    @PUT("profile/password")
+    Call<ResponseBody> actualizarPassword(@Header("Authorization") String token, @Body PasswordUpdateRequest request);
 }
