@@ -90,6 +90,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
         <!-- HISTORIAL -->
+
+
+        <!-- BOTON CALENDARIO -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnHistorial"
             android:layout_width="match_parent"
@@ -105,12 +108,10 @@
             app:elevation="4dp"
             app:icon="@drawable/ic_history"
             app:iconGravity="textStart"
-            app:iconSize="44dp"
             app:iconPadding="40dp"
+            app:iconSize="44dp"
             app:iconTint="#4CAF50" />
 
-
-        <!-- BOTON CALENDARIO -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCalendario"
             android:layout_width="match_parent"
@@ -125,8 +126,8 @@
             app:elevation="4dp"
             app:icon="@drawable/ic_calendar"
             app:iconGravity="textStart"
-            app:iconSize="44dp"
             app:iconPadding="40dp"
+            app:iconSize="44dp"
             app:iconTint="#4CAF50" />
 
     </LinearLayout>
@@ -137,7 +138,7 @@
         android:id="@+id/btnMarcarAsistencia"
         android:layout_width="280dp"
         android:layout_height="88dp"
-        android:layout_marginBottom="128dp"
+        android:layout_marginBottom="168dp"
         android:backgroundTint="#4CAF50"
         android:text="MARCAR ASISTENCIA"
         android:textAllCaps="false"
