@@ -137,7 +137,7 @@
         android:id="@+id/btnMarcarAsistencia"
         android:layout_width="280dp"
         android:layout_height="88dp"
-        android:layout_marginBottom="112dp"
+        android:layout_marginBottom="128dp"
         android:backgroundTint="#4CAF50"
         android:text="MARCAR ASISTENCIA"
         android:textAllCaps="false"
