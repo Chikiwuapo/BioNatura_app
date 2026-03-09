@@ -1,10 +1,12 @@
 package com.goku1.bionatura;
 
 import com.goku1.bionatura.models.AsistenciaPendiente;
+import com.goku1.bionatura.models.PasswordUpdateRequest;
 import com.goku1.bionatura.models.RegistroRequest;
 import com.goku1.bionatura.models.UserAsistencia;
 import com.goku1.bionatura.models.UserDate;
 import com.goku1.bionatura.models.UserProfile;
+import com.goku1.bionatura.models.UserUpdateProfileRequest;
 
 
 import java.util.List;
@@ -33,7 +35,6 @@ public interface ApiService {
     @POST("material/registrar")
     Call<ResponseBody> registrarMaterial(@Body RegistroRequest request);
 
-    // Nuevo endpoint para registrar asistencia
     @POST("asistencia/registrar")
     Call<ResponseBody> registrarAsistencia(@Body UserAsistencia request);
 
@@ -42,4 +43,11 @@ public interface ApiService {
 
     @PUT("asistencia/salida")
     Call<ResponseBody> registrarSalida(@Header("Authorization") String token, @Body Map<String, String> body);
+
+
+    @PUT("profile/update")
+    Call<ResponseBody> actualizarPerfil(@Header("Authorization") String token, @Body UserUpdateProfileRequest request);
+
+    @PUT("profile/password")
+    Call<ResponseBody> actualizarPassword(@Header("Authorization") String token, @Body PasswordUpdateRequest request);
 }
