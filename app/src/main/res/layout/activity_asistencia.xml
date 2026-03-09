@@ -132,23 +132,26 @@
     </LinearLayout>
 
     <!-- BOTON PRINCIPAL -->
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnMarcarAsistencia"
         android:layout_width="280dp"
         android:layout_height="88dp"
+        android:layout_marginBottom="112dp"
+        android:backgroundTint="#4CAF50"
         android:text="MARCAR ASISTENCIA"
         android:textAllCaps="false"
-        android:textStyle="bold"
-        android:textSize="20sp"
         android:textColor="@color/white"
-        android:backgroundTint="#4CAF50"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:cornerRadius="18dp"
         app:icon="@drawable/ic_check"
         app:iconPadding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="30dp"/>
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="0dp"
