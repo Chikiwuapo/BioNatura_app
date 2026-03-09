@@ -51,6 +51,6 @@ public interface ApiService {
     @PUT("profile/password")
     Call<ResponseBody> actualizarPassword(@Header("Authorization") String token, @Body PasswordUpdateRequest request);
 
-    @GET("asistencia/listar") // Cambia esta ruta según tu backend
+    @GET("asistencia/listar")
     Call<List<HistorialAsistencia>> getHistorial(@Header("Authorization") String token);
 }

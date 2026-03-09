@@ -63,7 +63,7 @@ public class perfil extends AppCompatActivity {
         findViewById(R.id.btnVolver).setOnClickListener(v -> finish());
         btnCerrarSesion.setOnClickListener(view -> cerrarSesion());
 
-        configurarNavegacion();
+
         configurarInsets();
     }
 
@@ -103,34 +103,6 @@ public class perfil extends AppCompatActivity {
         txtfechaingreso.setText(user.getFecha_registro());
     }
 
-    private void configurarNavegacion() {
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        if (bottomNavigationView != null) {
-            bottomNavigationView.setSelectedItemId(R.id.nav_perfil);
-            bottomNavigationView.setOnItemSelectedListener(item -> {
-                int id = item.getItemId();
-                if (id == R.id.nav_inicio) {
-                    startActivity(new Intent(this, MainActivity.class));
-                    finish();
-                    overridePendingTransition(0, 0);
-                    return true;
-                } else if (id == R.id.nav_historial) {
-                    startActivity(new Intent(this, historial_asistencias.class));
-                    finish();
-                    overridePendingTransition(0, 0);
-                    return true;
-                } else if (id == R.id.nav_registrar) {
-                    startActivity(new Intent(this, asistencia.class));
-                    finish();
-                    overridePendingTransition(0, 0);
-                    return true;
-                } else if (id == R.id.nav_perfil) {
-                    return true;
-                }
-                return false;
-            });
-        }
-    }
 
     private void configurarInsets() {
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {

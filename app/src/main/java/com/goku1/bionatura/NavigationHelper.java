@@ -8,7 +8,7 @@ public class NavigationHelper {
 
     public static void setupBottomNavigation(Activity activity, int currentItemId) {
         BottomNavigationView bottomNavigationView = activity.findViewById(R.id.bottom_navigation);
-        
+
         if (bottomNavigationView == null) return;
 
         // Establecer el elemento seleccionado actual
@@ -16,7 +16,7 @@ public class NavigationHelper {
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
-            
+
             if (id == currentItemId) return true;
 
             Intent intent = null;

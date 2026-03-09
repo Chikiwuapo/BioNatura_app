@@ -17,11 +17,13 @@
         app:cardBackgroundColor="#1B5E20"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="20dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            >
 
             <ImageButton
                 android:id="@+id/btnVolver"
@@ -66,6 +68,8 @@
 
 
         <!-- BUSCADOR + BOTONES -->
+
+        <!--
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -114,48 +118,47 @@
                 app:tint="#1B5E20"/>
 
         </LinearLayout>
+        -->
 
         <!-- FILTROS -->
         <LinearLayout
             android:id="@+id/filtrosLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:layout_marginHorizontal="16dp"
             android:orientation="horizontal"
             android:gravity="center_vertical">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnCalendario"
+                android:id="@+id/btnFiltrarAsistencias"
                 android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_marginEnd="6dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
-                android:backgroundTint="#FFFFFF"
-                android:text="Calendario"
-                android:textAllCaps="false"
-                android:textColor="#333333"
-                android:textStyle="bold"
-                app:cornerRadius="20dp"
-                app:elevation="4dp"
-                app:icon="@drawable/ic_calendar"
-                app:iconGravity="textStart"
-                app:iconPadding="8dp"
-                app:iconTint="#4CAF50" />
+                android:text="Asistió"
+                android:backgroundTint="#2E7D32"
+                android:textAllCaps="false"/>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnEstado"
+                android:id="@+id/btnFiltrarTardanzas"
                 android:layout_width="0dp"
-                android:layout_height="60dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
-                android:layout_marginStart="6dp"
-                android:text="Estado"
+                android:text="Tardanzas"
+                android:backgroundTint="#FFA500"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:backgroundTint="#2E7D32"
-                app:cornerRadius="20dp"
+                android:layout_marginStart="8dp"/>
 
-                app:iconPadding="8dp"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnFiltrarTodos"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="Todos"
+                android:textAllCaps="false"
+                android:layout_marginStart="8dp"/>
+
+
 
         </LinearLayout>
         <!-- RESUMEN -->
@@ -175,11 +178,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Resumen mensual"
+                    android:text="Resumen"
                     android:textStyle="bold"
                     android:textSize="14sp"/>
 
                 <TextView
+                    android:id="@+id/txtporcentajepuntualidad"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="95% de puntualidad"
@@ -194,6 +198,7 @@
                     android:layout_marginTop="6dp">
 
                     <TextView
+                        android:id="@+id/txtnroasistencias"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -202,6 +207,7 @@
                         android:textSize="12sp" />
 
                     <TextView
+                        android:id="@+id/txtnrotardanzas"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -210,6 +216,7 @@
                         android:layout_marginEnd="16dp"/>
 
                     <TextView
+                        android:id="@+id/txtnrofaltas"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -228,7 +235,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:paddingHorizontal="16dp"
-            tools:listitem="@layout/item_historial_lista"/>
+            tools:listitem="@layout/item_historial_lista" />
 
     </LinearLayout>
 

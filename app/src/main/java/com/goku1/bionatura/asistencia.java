@@ -96,8 +96,27 @@ public class asistencia extends AppCompatActivity {
         String token = prefs.getString("token", null);
         if (token == null || token.isEmpty()) return;
 
-        String horaActual = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
-                .format(new Date());
+        // Hora actual
+        Date ahora = new Date();
+        String horaActualStr = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+                .format(ahora);
+
+        // Determinar si es tardanza o entrada puntual
+        int estadoLocal = 1; // mutable
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());
+            Date horaLimite = sdf.parse("08:01"); // 8:01 AM
+            Date horaAhora = sdf.parse(new SimpleDateFormat("HH:mm", Locale.getDefault()).format(ahora));
+
+            if (horaAhora.after(horaLimite)) {
+                estadoLocal = 2;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+// Crear un final para el Callback
+        final int estado = estadoLocal;
 
         String idUser = getIdUserFromToken(token);
         if (idUser == null) {
@@ -105,7 +124,8 @@ public class asistencia extends AppCompatActivity {
             return;
         }
 
-        UserAsistencia asistencia = new UserAsistencia(idUser, 1, horaActual);
+        // Crear objeto con estado calculado
+        UserAsistencia asistencia = new UserAsistencia(idUser, estado, horaActualStr);
 
         ApiService apiService = ApiClient.getClient().create(ApiService.class);
         Call<ResponseBody> call = apiService.registrarAsistencia(asistencia);
@@ -114,7 +134,8 @@ public class asistencia extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(), "Entrada registrada", Toast.LENGTH_SHORT).show();
+                    String mensaje = (estado == 1) ? "Entrada registrada" : "Entrada registrada como TARDANZA";
+                    Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_SHORT).show();
                     esEntrada = false;
                     btnMarcarAsistencia.setText("Marcar Salida");
 
