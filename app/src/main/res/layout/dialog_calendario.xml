@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="#F2F2F2">
 
     <com.google.android.material.card.MaterialCardView
@@ -26,44 +26,8 @@
                 android:id="@+id/btnCerrar"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@android:drawable/ic_menu_close_clear_cancel"
-                android:layout_gravity="end" />
-
-            <!-- Selector de mes -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_marginTop="12dp">
-
-                <ImageButton
-                    android:id="@+id/btnMesAnterior"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@android:drawable/ic_media_previous"
-                    android:background="@android:color/transparent"
-                    app:tint="#2E7D32"/>
-
-                <TextView
-                    android:id="@+id/txtMes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="MAYO"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_marginHorizontal="20dp"
-                    android:textColor="#333333"/>
-
-                <ImageButton
-                    android:id="@+id/btnMesSiguiente"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@android:drawable/ic_media_next"
-                    android:background="@android:color/transparent"
-                    app:tint="#2E7D32"/>
-
-            </LinearLayout>
+                android:layout_gravity="end"
+                android:src="@android:drawable/ic_menu_close_clear_cancel" />
 
             <!-- Calendario -->
             <CalendarView
@@ -71,50 +35,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:firstDayOfWeek="2"
+                android:showWeekNumber="false"
                 android:focusedMonthDateColor="#2E7D32"
                 android:unfocusedMonthDateColor="#9E9E9E"
                 android:weekSeparatorLineColor="#E0E0E0"
                 android:selectedWeekBackgroundColor="#C8E6C9"/>
-
-            <!-- Selector de año -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:background="#2E7D32"
-                android:layout_marginTop="16dp">
-
-                <Button
-                    android:id="@+id/btnAnioAnterior"
-                    android:text="2025"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:textColor="@android:color/white"
-                    android:background="@android:color/transparent"/>
-
-                <Button
-                    android:id="@+id/btnAnioActual"
-                    android:text="2026"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:textColor="@android:color/white"
-                    android:background="@android:color/transparent"/>
-
-                <Button
-                    android:id="@+id/btnAnioSiguiente"
-                    android:text="2027"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:textColor="@android:color/white"
-                    android:background="@android:color/transparent"/>
-
-            </LinearLayout>
 
         </LinearLayout>
 

@@ -2,7 +2,9 @@ package com.goku1.bionatura;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.CalendarView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -98,5 +100,26 @@ public class historial_asistencias extends AppCompatActivity {
         });
 
         findViewById(R.id.btnVolver).setOnClickListener(v -> finish());
+
+        findViewById(R.id.btnCalendario).setOnClickListener(v -> {
+
+            android.app.Dialog dialog = new android.app.Dialog(historial_asistencias.this);
+            dialog.setContentView(R.layout.dialog_calendario);
+
+            if (dialog.getWindow() != null) {
+                dialog.getWindow().setLayout(
+                        android.view.ViewGroup.LayoutParams.MATCH_PARENT,
+                        android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+                );
+            }
+
+            CalendarView calendarView = dialog.findViewById(R.id.calendarView);
+            calendarView.setDate(System.currentTimeMillis(), true, true);
+
+            ImageView btnCerrar = dialog.findViewById(R.id.btnCerrar);
+            btnCerrar.setOnClickListener(v2 -> dialog.dismiss());
+
+            dialog.show();
+        });
     }
 }

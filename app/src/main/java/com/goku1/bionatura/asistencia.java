@@ -49,20 +49,6 @@ public class asistencia extends AppCompatActivity {
         });
 
         findViewById(R.id.btnVolver).setOnClickListener(v -> finish());
-        findViewById(R.id.btnCalendario).setOnClickListener(v -> {
-
-            android.app.Dialog dialog = new android.app.Dialog(asistencia.this);
-            dialog.setContentView(R.layout.dialog_calendario);
-
-            if (dialog.getWindow() != null) {
-                dialog.getWindow().setLayout(
-                        android.view.ViewGroup.LayoutParams.MATCH_PARENT,
-                        android.view.ViewGroup.LayoutParams.WRAP_CONTENT
-                );
-            }
-
-            dialog.show();
-        });
         findViewById(R.id.btnHistorial).setOnClickListener(v -> {
             startActivity(new Intent(this, historial_asistencias.class));
         });

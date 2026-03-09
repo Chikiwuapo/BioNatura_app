@@ -88,7 +88,7 @@
                     android:id="@+id/searchInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Buscar por fecha"/>
+                    android:hint="Buscar"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -116,7 +116,6 @@
 
         </LinearLayout>
 
-
         <!-- FILTROS -->
         <LinearLayout
             android:id="@+id/filtrosLayout"
@@ -127,55 +126,39 @@
             android:gravity="center_vertical">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnMes"
+                android:id="@+id/btnCalendario"
                 android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="6dp"
                 android:layout_weight="1"
-                android:text="Mes"
+                android:backgroundTint="#FFFFFF"
+                android:text="Calendario"
                 android:textAllCaps="false"
-                android:textSize="12sp"
-                android:textColor="@color/white"
-                android:backgroundTint="#2E7D32"
+                android:textColor="#333333"
+                android:textStyle="bold"
                 app:cornerRadius="20dp"
-                app:icon="@drawable/mes"
-                app:iconSize="18dp"
-                app:iconPadding="6dp"/>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnSemana"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:text="Semana"
-                android:textAllCaps="false"
-                android:textSize="12sp"
-                android:textColor="@color/white"
-                android:backgroundTint="#2E7D32"
-                android:layout_marginStart="6dp"
-                app:cornerRadius="20dp"
-                app:icon="@drawable/semana"
-                app:iconSize="18dp"
-                app:iconPadding="6dp"/>
+                app:elevation="4dp"
+                app:icon="@drawable/ic_calendar"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp"
+                app:iconTint="#4CAF50" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnEstado"
                 android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_height="60dp"
                 android:layout_weight="1"
+                android:layout_marginStart="6dp"
                 android:text="Estado"
                 android:textAllCaps="false"
-                android:textSize="12sp"
                 android:textColor="@color/white"
+                android:textStyle="bold"
                 android:backgroundTint="#2E7D32"
-                android:layout_marginStart="6dp"
                 app:cornerRadius="20dp"
                 app:icon="@drawable/estado"
-                app:iconSize="18dp"
-                app:iconPadding="6dp"/>
+                app:iconPadding="8dp"/>
 
         </LinearLayout>
-
-
         <!-- RESUMEN -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
