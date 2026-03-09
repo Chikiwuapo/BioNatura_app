@@ -31,12 +31,13 @@ public class HistorialAdapter extends RecyclerView.Adapter<HistorialAdapter.View
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
         HistorialAsistencia item = lista.get(position);
 
         holder.txtFecha.setText("Fecha: " + item.getFecha());
-        holder.txtEntrada.setText("Entrada: " + item.getHoraEntrada());
-        holder.txtSalida.setText("Salida: " + item.getHoraSalida());
+        holder.txtEntrada.setText("Entrada: " + item.getHoraEntrada().split("T")[1].substring(0, 8));
+        holder.txtSalida.setText("Salida: " + item.getHoraSalida().split("T")[1].substring(0, 8));
+        holder.txtEstado.setText("Estado: " + item.getEstado());
+        holder.txtDistrito.setText("Distrito: " + item.getDistrito());
     }
 
     @Override
@@ -46,7 +47,7 @@ public class HistorialAdapter extends RecyclerView.Adapter<HistorialAdapter.View
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView txtFecha;
+        TextView txtFecha, txtEstado, txtDistrito;
         TextView txtEntrada;
         TextView txtSalida;
 
@@ -56,6 +57,9 @@ public class HistorialAdapter extends RecyclerView.Adapter<HistorialAdapter.View
             txtFecha = itemView.findViewById(R.id.txtFecha);
             txtEntrada = itemView.findViewById(R.id.txtEntrada);
             txtSalida = itemView.findViewById(R.id.txtSalida);
+            txtEstado = itemView.findViewById(R.id.txtEstado);
+            txtDistrito = itemView.findViewById(R.id.txtDistrito);
+
         }
     }
 }

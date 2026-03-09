@@ -99,6 +99,7 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="8dp"
 
+
                 android:padding="8dp"
                 app:tint="#1B5E20"/>
 
@@ -108,7 +109,6 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="6dp"
-
 
                 android:padding="8dp"
                 app:tint="#1B5E20"/>
@@ -228,10 +228,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:paddingHorizontal="16dp"
-            tools:listitem="@layout/item_historial_lista">
-
-
-        </androidx.recyclerview.widget.RecyclerView>
+            tools:listitem="@layout/item_historial_lista"/>
 
     </LinearLayout>
 
