@@ -1,5 +1,6 @@
 package com.goku1.bionatura;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Base64;
@@ -27,6 +28,7 @@ import retrofit2.Response;
 public class asistencia extends AppCompatActivity {
 
     private Button btnMarcarAsistencia;
+    Button btnHistorialAsis;
     private boolean esEntrada; // Estado del botón
     private static final String PREFS_ASISTENCIA = "asistencia_session";
     private static final String KEY_PENDIENTE_SALIDA = "pendienteSalida";
@@ -37,6 +39,8 @@ public class asistencia extends AppCompatActivity {
         setContentView(R.layout.activity_asistencia);
 
         btnMarcarAsistencia = findViewById(R.id.btnMarcarAsistencia);
+        btnHistorialAsis = findViewById(R.id.btnHistorialAsis);
+        btnHistorialAsis.setOnClickListener(view -> changeToHistorialAsistencia());
 
         // Recuperar estado guardado local
         SharedPreferences prefs = getSharedPreferences(PREFS_ASISTENCIA, MODE_PRIVATE);
@@ -188,5 +192,10 @@ public class asistencia extends AppCompatActivity {
             e.printStackTrace();
             return null;
         }
+    }
+
+    private void changeToHistorialAsistencia(){
+        Intent intent = new Intent(asistencia.this, historial_asistencias.class);
+        startActivity(intent);
     }
 }
