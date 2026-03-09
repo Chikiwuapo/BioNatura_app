@@ -1,46 +1,44 @@
 package com.goku1.bionatura;
 
-import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.view.View;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class historial_asistencias extends AppCompatActivity {
+
+    private RecyclerView recyclerHistorial;
+    private HistorialAdapter adapter;
+    private List<HistorialAsistencia> listaHistorial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historial_asistencias);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        if (bottomNavigationView != null) {
-            bottomNavigationView.setSelectedItemId(R.id.nav_historial);
-            bottomNavigationView.setOnItemSelectedListener(item -> {
-                int id = item.getItemId();
-                if (id == R.id.nav_inicio) {
-                    startActivity(new Intent(this, MainActivity.class));
-                    finish();
-                    overridePendingTransition(0, 0);
-                    return true;
-                } else if (id == R.id.nav_historial) {
-                    return true;
-                } else if (id == R.id.nav_registrar) {
-                    startActivity(new Intent(this, asistencia.class));
-                    finish();
-                    overridePendingTransition(0, 0);
-                    return true;
-                } else if (id == R.id.nav_perfil) {
-                    startActivity(new Intent(this, perfil.class));
-                    finish();
-                    overridePendingTransition(0, 0);
-                    return true;
-                }
-                return false;
-            });
-        }
+        recyclerHistorial = findViewById(R.id.recyclerHistorial);
+
+        recyclerHistorial.setLayoutManager(new LinearLayoutManager(this));
+
+        listaHistorial = new ArrayList<>();
+
+
+        listaHistorial.add(new HistorialAsistencia("2026-03-08","08:00","17:00"));
+        listaHistorial.add(new HistorialAsistencia("2026-03-07","08:10","17:05"));
+        listaHistorial.add(new HistorialAsistencia("2026-03-06","08:05","17:01"));
+        listaHistorial.add(new HistorialAsistencia("2026-03-06","08:05","17:01"));
+        adapter = new HistorialAdapter(listaHistorial);
+
+        recyclerHistorial.setAdapter(adapter);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
