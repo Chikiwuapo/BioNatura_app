@@ -2,8 +2,11 @@ package com.goku1.bionatura;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,8 +30,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         cargarPerfil();
-
         setupCards();
+
+        // Ejemplo: botón para enviar correo usando el email del usuario
+        Button btnEnviarCorreo = findViewById(R.id.btnEnviarCorreo);
+        btnEnviarCorreo.setOnClickListener(v -> enviarCorreo());
     }
 
     private void setupCards() {
@@ -60,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         card_asistencia.setOnClickListener(view -> {
             if (user != null) {
                 Intent intent = new Intent(MainActivity.this, asistencia.class);
@@ -67,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
     private void cargarPerfil() {
@@ -106,5 +112,28 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, Login.class);
         startActivity(intent);
         finish();
+    }
+
+    // -----------------------------
+    // Método para enviar correo usando el email del usuario
+    private void enviarCorreo() {
+        if (user == null || user.getCorreo() == null || user.getCorreo().isEmpty()) {
+            Toast.makeText(this, "No se pudo obtener el correo del usuario", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Intent correo = new Intent(Intent.ACTION_SENDTO);
+        correo.setData(Uri.parse("mailto:"));
+        correo.putExtra(Intent.EXTRA_EMAIL, new String[]{user.getCorreo()});
+        correo.putExtra(Intent.EXTRA_SUBJECT, "Asunto del correo");
+        correo.putExtra(Intent.EXTRA_TEXT, "Hola " + user.getPrimernombre() + ", este es un mensaje desde la app.");
+
+// Crear chooser
+        Intent chooser = Intent.createChooser(correo, "Enviar correo usando");
+        if (correo.resolveActivity(getPackageManager()) != null) {
+            startActivity(chooser);
+        } else {
+            Toast.makeText(this, "No hay aplicación de correo instalada", Toast.LENGTH_SHORT).show();
+        }
     }
 }
