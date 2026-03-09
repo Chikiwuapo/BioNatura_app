@@ -55,10 +55,11 @@
 
             <View
                 android:id="@+id/VistaSecundaria"
-                android:layout_width="match_parent"
-                android:layout_height="260dp"
+                android:layout_width="410dp"
+                android:layout_height="234dp"
                 android:background="#FFFFFF"
-                app:layout_constraintTop_toBottomOf="@id/VistaSuperior" />
+                app:layout_constraintTop_toBottomOf="@id/VistaSuperior"
+                tools:layout_editor_absoluteX="1dp" />
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/FotoPerfil"
@@ -100,39 +101,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
 
-            <View
-                android:id="@+id/VistaID"
-                android:layout_width="130dp"
-                android:layout_height="28dp"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/bg_badge_id"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Cargo" />
 
-            <TextView
-                android:id="@+id/lblIdTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:text="ID:"
-                android:textStyle="bold"
-                android:textColor="#1B5E20"
-                app:layout_constraintBottom_toBottomOf="@+id/VistaID"
-                app:layout_constraintStart_toStartOf="@+id/VistaID"
-                app:layout_constraintTop_toTopOf="@+id/VistaID" />
-
-            <TextView
-                android:id="@+id/txtId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:text="#ECL-8829"
-                android:textStyle="bold"
-                android:textColor="#1B5E20"
-                app:layout_constraintBottom_toBottomOf="@+id/VistaID"
-                app:layout_constraintStart_toEndOf="@+id/lblIdTitle"
-                app:layout_constraintTop_toTopOf="@+id/VistaID" />
 
             <TextView
                 android:id="@+id/datosContacto"

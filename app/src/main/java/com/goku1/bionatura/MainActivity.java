@@ -9,9 +9,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.card.MaterialCardView;
+import com.goku1.bionatura.models.TopRegistro;
 import com.goku1.bionatura.models.UserProfile;
+
+import org.w3c.dom.Text;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,19 +28,32 @@ public class MainActivity extends AppCompatActivity {
     private static final String SESSION_NAME = "session";
     private static final String KEY_TOKEN = "token";
 
-    private UserProfile user; // Guardará datos del usuario
+    private UserProfile user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+
         cargarPerfil();
         setupCards();
 
-        // Ejemplo: botón para enviar correo usando el email del usuario
         Button btnEnviarCorreo = findViewById(R.id.btnEnviarCorreo);
         btnEnviarCorreo.setOnClickListener(v -> enviarCorreo());
+    }
+
+    // ----------------------
+// AÑADIR ESTO
+    @Override
+    protected void onResume() {
+        super.onResume();
+        cargarTopRegistro(); // se asegura de refrescar los TextView cada vez que vuelves
     }
 
     private void setupCards() {
@@ -93,8 +112,11 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<UserProfile> call, Response<UserProfile> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     user = response.body();
+                    TextView txtdistrito = findViewById(R.id.txtdistrito);
+                    txtdistrito.setText("Distrito: " + user.getDistrito());
                     TextView tv_greeting = findViewById(R.id.tv_greeting);
                     tv_greeting.setText("Hola " + user.getPrimernombre());
+
                 } else {
                     redirectToLogin();
                 }
@@ -108,14 +130,51 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // -----------------------------
+    // NUEVO: cargar top registro
+// NUEVO: cargar top registro en TextViews separados
+    private void cargarTopRegistro() {
+        SharedPreferences prefs = getSharedPreferences(SESSION_NAME, MODE_PRIVATE);
+        String token = prefs.getString(KEY_TOKEN, null);
+
+        if (token == null || token.isEmpty()) return;
+
+        ApiService apiService = ApiClient.getClient().create(ApiService.class);
+        Call<TopRegistro> call = apiService.getTopRegistro("Bearer " + token);
+
+        call.enqueue(new Callback<TopRegistro>() {
+            @Override
+            public void onResponse(Call<TopRegistro> call, Response<TopRegistro> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    TopRegistro top = response.body();
+
+                    TextView txtRecolectado = findViewById(R.id.txtrecolectado);
+                    TextView txtRegistros = findViewById(R.id.txtregistros);
+                    TextView txtFrecuente = findViewById(R.id.txtfrecuente);
+
+                    txtRecolectado.setText(String.valueOf(top.getTotalCantidad()) + " KG");
+                    txtRegistros.setText(String.valueOf(top.getTotalRegistros()));
+                    txtFrecuente.setText(top.getMaterial());
+
+                } else {
+                    Toast.makeText(MainActivity.this, "No se pudo obtener el top registro", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TopRegistro> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText(MainActivity.this, "Error al conectar con el servidor", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     private void redirectToLogin() {
         Intent intent = new Intent(MainActivity.this, Login.class);
         startActivity(intent);
         finish();
     }
 
-    // -----------------------------
-    // Método para enviar correo usando el email del usuario
     private void enviarCorreo() {
         if (user == null || user.getCorreo() == null || user.getCorreo().isEmpty()) {
             Toast.makeText(this, "No se pudo obtener el correo del usuario", Toast.LENGTH_SHORT).show();
@@ -128,7 +187,6 @@ public class MainActivity extends AppCompatActivity {
         correo.putExtra(Intent.EXTRA_SUBJECT, "Asunto del correo");
         correo.putExtra(Intent.EXTRA_TEXT, "Hola " + user.getPrimernombre() + ", este es un mensaje desde la app.");
 
-// Crear chooser
         Intent chooser = Intent.createChooser(correo, "Enviar correo usando");
         if (correo.resolveActivity(getPackageManager()) != null) {
             startActivity(chooser);

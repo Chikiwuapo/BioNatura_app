@@ -3,6 +3,7 @@ package com.goku1.bionatura;
 import com.goku1.bionatura.models.AsistenciaPendiente;
 import com.goku1.bionatura.models.PasswordUpdateRequest;
 import com.goku1.bionatura.models.RegistroRequest;
+import com.goku1.bionatura.models.TopRegistro;
 import com.goku1.bionatura.models.UserAsistencia;
 import com.goku1.bionatura.models.UserDate;
 import com.goku1.bionatura.models.UserProfile;
@@ -53,4 +54,8 @@ public interface ApiService {
 
     @GET("asistencia/listar")
     Call<List<HistorialAsistencia>> getHistorial(@Header("Authorization") String token);
+
+    // NUEVO: top registro
+    @GET("/api/material/top")
+    Call<TopRegistro> getTopRegistro(@Header("Authorization") String token);
 }

@@ -44,8 +44,8 @@
 
             <TextView
                 android:id="@+id/tv_greeting"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="120dp"
+                android:layout_height="36dp"
                 android:layout_marginStart="12dp"
                 android:text="Hola, Juan"
                 android:textColor="@color/white"
@@ -68,35 +68,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
-                android:text="JORNADA ACTIVA"
+                android:text="USUARIO ACTIVO"
                 android:textColor="#E0E0E0"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/dot_active"
                 app:layout_constraintStart_toEndOf="@+id/dot_active"
                 app:layout_constraintTop_toTopOf="@+id/dot_active" />
 
-            <ImageView
-                android:id="@+id/iv_bell"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="24dp"
-                android:background="@drawable/circle_bg"
-                android:backgroundTint="@color/green_card_translucent"
-                android:padding="8dp"
-                android:src="@drawable/ic_bell"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_profile_avatar"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/iv_profile_avatar" />
 
-            <View
-                android:layout_width="10dp"
-                android:layout_height="10dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="2dp"
-                android:background="@drawable/circle_bg"
-                android:backgroundTint="@color/red_notification"
-                app:layout_constraintEnd_toEndOf="@+id/iv_bell"
-                app:layout_constraintTop_toTopOf="@+id/iv_bell" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_turno"
@@ -134,6 +113,7 @@
                             android:textStyle="bold" />
                     </LinearLayout>
                     <TextView
+                        android:id="@+id/txtdistrito"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
@@ -168,7 +148,7 @@
                         android:paddingVertical="16dp">
                         <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_recolectado" app:tint="@color/green_primary"/>
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="RECOLECTADO" android:textSize="9sp" android:textStyle="bold" android:textColor="@color/text_gray" android:layout_marginTop="8dp"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1,240 kg" android:textSize="16sp" android:textStyle="bold" android:textColor="@color/text_dark"/>
+                        <TextView android:id="@+id/txtrecolectado" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1,240 kg" android:textSize="16sp" android:textStyle="bold" android:textColor="@color/text_dark"/>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
@@ -188,27 +168,49 @@
                         android:paddingVertical="16dp">
                         <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_registros" app:tint="@color/green_primary"/>
                         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="REGISTROS" android:textSize="9sp" android:textStyle="bold" android:textColor="@color/text_gray" android:layout_marginTop="8dp"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="14" android:textSize="18sp" android:textStyle="bold" android:textColor="@color/text_dark"/>
+                        <TextView android:id="@+id/txtregistros" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="14" android:textSize="18sp" android:textStyle="bold" android:textColor="@color/text_dark"/>
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="103dp"
                     android:layout_margin="8dp"
                     android:layout_weight="1"
                     app:cardBackgroundColor="@color/white"
                     app:cardCornerRadius="16dp"
                     app:cardElevation="4dp">
+
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:paddingVertical="16dp">
-                        <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_frecuente" app:tint="@color/green_primary"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="FRECUENTE" android:textSize="9sp" android:textStyle="bold" android:textColor="@color/text_gray" android:layout_marginTop="8dp"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Plástico/PET" android:textSize="12sp" android:textStyle="bold" android:textColor="@color/text_dark"/>
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_frecuente"
+                            app:tint="@color/green_primary" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="FRECUENTE"
+                            android:textColor="@color/text_gray"
+                            android:textSize="9sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtfrecuente"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Plástico/PET"
+                            android:textColor="@color/text_dark"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>

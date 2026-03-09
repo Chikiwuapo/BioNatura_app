@@ -30,16 +30,16 @@ public class UserProfile implements Serializable {
     private String nro_telefono;
 
     @SerializedName("distrito")
-    private String distrito;  // antes era id_distrito
+    private String distrito;
 
     @SerializedName("cargo")
-    private String cargo;     // antes era id_cargo
+    private String cargo;
 
     @SerializedName("area")
     private String area;
 
     @SerializedName("fecha_registro")
-    private String fecha_registro; // sigue siendo String, Gson lo parsea directamente
+    private String fecha_registro;
 
     // Getters
     public String getId_usuario() { return id_usuario; }

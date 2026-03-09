@@ -31,6 +31,7 @@ public class perfil extends AppCompatActivity {
         setContentView(R.layout.activity_perfil);
 
         btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
+
         btnEditar = findViewById(R.id.btnEditar);
         btnCambiar = findViewById(R.id.btnCambiar);
         txtNombre = findViewById(R.id.txtNombre);
