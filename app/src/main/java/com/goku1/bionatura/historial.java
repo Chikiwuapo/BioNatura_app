@@ -50,7 +50,7 @@ public class historial extends AppCompatActivity {
         });
 
         cargarRegistros();
-        findViewById(R.id.btnRegresar).setOnClickListener(v -> finish());
+        //findViewById(R.id.btnRegresar).setOnClickListener(v -> finish());
     }
 
     private void cargarRegistros() {
