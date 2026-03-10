@@ -8,7 +8,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.goku1.bionatura.models.UserProfile;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import android.content.SharedPreferences;
 import android.widget.Button;
 import android.widget.TextView;

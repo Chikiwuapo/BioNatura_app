@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E7EDE8"
+    android:background="@color/bg_main"
     android:padding="28dp">
 
     <ImageView
@@ -162,7 +162,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:backgroundTint="#1C5F21"
+                app:backgroundTint="@color/green_primary"
                 app:cornerRadius="14dp"
                 app:elevation="4dp" />
 

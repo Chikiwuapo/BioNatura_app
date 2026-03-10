@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
                     txtdistrito.setText("Distrito: " + user.getDistrito());
 
                     TextView tv_greeting = findViewById(R.id.tv_greeting);
-                    tv_greeting.setText("Hola " + user.getPrimernombre());
+                    tv_greeting.setText("Hola, " + user.getPrimernombre());
 
                 } else {
                     redirectToLogin();

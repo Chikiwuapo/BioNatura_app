@@ -13,4 +13,5 @@
     <color name="green_light_bg">#E8F2EA</color>
     <color name="green_light">#E8F2EA</color>
     <color name="nav_item_color">#1D6031</color>
+    <color name="accent_purple">#6A5AE0</color>
 </resources>
