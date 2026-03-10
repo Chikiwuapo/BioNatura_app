@@ -2,9 +2,12 @@ package com.goku1.bionatura;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -53,14 +56,14 @@ public class ActualizarDatosActivity extends AppCompatActivity {
         email2 = findViewById(R.id.txtemail2);
         telefono = findViewById(R.id.txtnumero);
     }
-
     private void validarYEnviar() {
+
         String mail = email1.getText().toString().trim();
         String confirmMail = email2.getText().toString().trim();
         String tel = telefono.getText().toString().trim();
 
         if (mail.isEmpty() || tel.isEmpty()) {
-            Toast.makeText(this, "Los campos no pueden estar vacíos", Toast.LENGTH_SHORT).show();
+            mostrarToast("Los campos no pueden estar vacíos");
             return;
         }
 
@@ -73,6 +76,7 @@ public class ActualizarDatosActivity extends AppCompatActivity {
     }
 
     private void ejecutarActualizacion(String mail, String tel) {
+
         UserUpdateProfileRequest request = new UserUpdateProfileRequest();
         request.setCorreo(mail);
         request.setNro_telefono(tel);
@@ -84,20 +88,39 @@ public class ActualizarDatosActivity extends AppCompatActivity {
         Call<ResponseBody> call = apiService.actualizarPerfil("Bearer " + token, request);
 
         call.enqueue(new Callback<ResponseBody>() {
+
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
                 if (response.isSuccessful()) {
-                    Toast.makeText(ActualizarDatosActivity.this, "Datos actualizados exitosamente", Toast.LENGTH_SHORT).show();
-                    finish(); // Regresa al perfil, donde onResume refrescará todo automáticamente
+                    mostrarToast("Datos actualizados exitosamente");
+                    finish();
                 } else {
-                    Toast.makeText(ActualizarDatosActivity.this, "Error al actualizar: " + response.code(), Toast.LENGTH_SHORT).show();
+                    mostrarToast("Error al actualizar: " + response.code());
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Toast.makeText(ActualizarDatosActivity.this, "Error de red: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                mostrarToast("Error de red: " + t.getMessage());
             }
         });
+    }
+    public void mostrarToast(String mensaje){
+
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast, null);
+
+        TextView txt = layout.findViewById(R.id.txtMensaje);
+        txt.setText(mensaje);
+
+        Toast toast = new Toast(getApplicationContext());
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(layout);
+
+        // posición arriba derecha
+        toast.setGravity(android.view.Gravity.TOP | android.view.Gravity.END, 30, 120);
+
+        toast.show();
     }
 }

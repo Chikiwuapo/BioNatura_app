@@ -119,11 +119,9 @@ public class historial extends AppCompatActivity {
                     extraInfo.setVisibility(View.GONE);
                 }
             });
-
             container.addView(componente);
         }
     }
-
     private void redirectToLogin() {
         Intent intent = new Intent(historial.this, Login.class);
         startActivity(intent);
@@ -137,7 +135,6 @@ public class historial extends AppCompatActivity {
             // Cambiamos el formato a solo fecha
             SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
             return outputFormat.format(date);
-
         } catch (ParseException e) {
             e.printStackTrace();
             return fechaISO; // en caso de error, devolvemos la original

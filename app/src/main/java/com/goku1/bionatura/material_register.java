@@ -3,6 +3,7 @@ package com.goku1.bionatura;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -164,22 +165,24 @@ public class material_register extends AppCompatActivity {
 
     private void enviarRegistro(RegistroRequest request) {
         ApiService apiService = ApiClient.getClient().create(ApiService.class);
-        Call<okhttp3.ResponseBody> call = apiService.registrarMaterial(request);
+        Call<ResponseBody> call = apiService.registrarMaterial(request);
 
-        call.enqueue(new Callback<okhttp3.ResponseBody>() {
+        call.enqueue(new Callback<ResponseBody>() {
+
             @Override
-            public void onResponse(Call<okhttp3.ResponseBody> call, Response<okhttp3.ResponseBody> response) {
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
                 if (response.isSuccessful()) {
-                    Toast.makeText(material_register.this, "Registro guardado correctamente", Toast.LENGTH_LONG).show();
-                    finish(); // Regresa al MainActivity
+                    mostrarToast("Registro guardado correctamente");
+                    finish();
                 } else {
-                    Toast.makeText(material_register.this, "Error al guardar", Toast.LENGTH_SHORT).show();
+                    mostrarToast("Error al guardar");
                 }
             }
 
             @Override
-            public void onFailure(Call<okhttp3.ResponseBody> call, Throwable t) {
-                Toast.makeText(material_register.this, "Error de red: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                mostrarToast("Error de red: " + t.getMessage());
             }
         });
     }
@@ -187,5 +190,22 @@ public class material_register extends AppCompatActivity {
     private int convertDpToPx(int dp) {
         float density = getResources().getDisplayMetrics().density;
         return Math.round((float) dp * density);
+    }
+    public void mostrarToast(String mensaje){
+
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast, null);
+
+        TextView txt = layout.findViewById(R.id.txtMensaje);
+        txt.setText(mensaje);
+
+        Toast toast = new Toast(getApplicationContext());
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(layout);
+
+        // posision toast (arriba derecha)
+        toast.setGravity(android.view.Gravity.TOP | android.view.Gravity.END, 30, 120);
+
+        toast.show();
     }
 }

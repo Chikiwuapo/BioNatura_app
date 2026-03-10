@@ -9,14 +9,15 @@
 
     <ImageView
         android:id="@+id/imgLogo"
-        android:layout_width="396dp"
-        android:layout_height="293dp"
-        android:layout_marginTop="1dp"
+        android:layout_width="330dp"
+        android:layout_height="215dp"
+        android:layout_marginTop="12dp"
+        android:adjustViewBounds="true"
         android:contentDescription="BioNature Logo"
-        android:scaleType="fitCenter"
+        android:scaleType="centerCrop"
         android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.788"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,9 +46,9 @@
                 android:layout_marginBottom="24dp"
                 android:lineSpacingExtra="2dp"
                 android:text="Bienvenido de nuevo. Por favor, ingresa tus credenciales."
-                android:textStyle="bold"
                 android:textColor="#888888"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -148,9 +149,9 @@
                 android:layout_marginBottom="24dp"
                 android:buttonTint="#1C5F21"
                 android:text="Recordarme"
-                android:textStyle="bold"
                 android:textColor="#555555"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                android:textStyle="bold" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnlogin"

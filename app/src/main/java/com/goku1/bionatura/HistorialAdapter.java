@@ -13,7 +13,6 @@ import java.util.Date;
 import java.util.List;
 
 public class HistorialAdapter extends RecyclerView.Adapter<HistorialAdapter.ViewHolder> {
-
     private List<HistorialAsistencia> lista;
 
     public HistorialAdapter(List<HistorialAsistencia> lista) {
