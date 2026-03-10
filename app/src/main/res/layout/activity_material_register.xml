@@ -179,10 +179,11 @@
                     android:layout_height="55dp"
                     android:layout_marginTop="8dp"
                     android:background="@android:drawable/edit_text">
+
                     <Spinner
                         android:id="@+id/spinnerDistritos"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="45dp"
                         android:spinnerMode="dropdown" />
                 </FrameLayout>
 
